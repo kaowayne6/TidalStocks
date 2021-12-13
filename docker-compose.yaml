@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    image: "tidal-backend"
+    ports:
+      - "3001:3001"
+  frontend:
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    image: "client-frontend"
+    ports:
+      - "3000:3000"
+    links:
+      - "backend:be" 
+  # test:
+  #     build:
+  #       context: .
+  #       dockerfile: ./Dockerfile
+  # web:
+  #   build: .
+  #   image: "tidal-web"
+  #   ports: 
+  #     - 3001:3001
